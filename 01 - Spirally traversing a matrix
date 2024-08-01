@@ -1,0 +1,31 @@
+vector<int> spirallyTraverse(vector<vector<int> > &m) {
+        vector<int> v;
+        int r = m.size(), c = m[0].size();
+        int n = r*c; //total no. of elements
+        //four pointer approach
+        int sr=0, er=r-1, sc=0, ec=c-1; //startrow, endrow, startcol, endcoll
+        int count=0;
+        while(count<n){
+            for(int i=sc; i<=ec && count<n; i++){
+                v.push_back(m[sr][i]);
+                count++;
+            }
+            sr++;
+            for(int i=sr; i<=er && count<n; i++){
+                v.push_back(m[i][ec]);
+                count++;
+            }
+            ec--;
+            for(int i=ec; i>=sc && count<n; i--){
+                v.push_back(m[er][i]);
+                count++;
+            }
+            er--;
+            for(int i=er; i>=sr && count<n; i--){
+                v.push_back(m[i][sc]);
+                count++;
+            }
+            sc++;
+        }
+        return v;
+    }
